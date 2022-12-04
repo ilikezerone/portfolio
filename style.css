@@ -1,0 +1,140 @@
+* {
+  font-family: monospace, Arial, sans-serif;
+}
+body {
+  background: url("background.jpg") no-repeat fixed bottom;
+}
+#grid-wrapper {
+  display: grid;
+  height: 98vh;
+  grid-template-columns: [line-start about-start] 1fr 1fr 1fr [about-end zerone-start] 1fr [me-start line-end] 1fr 1fr [zerone-end me-end];
+  grid-template-rows: [line-start me-start] 20% [line-end me-end about-start zerone-start] 80% [about-end zerone-end];
+  
+}
+.child1 {
+  grid-area: line;
+  align-self: center;
+}
+.child2 {
+  grid-area: me;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.child3 {
+  grid-area: about;
+}
+.child4 {
+  grid-area: zerone;
+}
+#logo {
+  height: 63.5%;
+  animation: spin 1s linear 0s infinite alternate;
+}
+#name {
+  color: gray;
+  font-size: 5vw;
+  margin-right: 2vw;
+  margin-left: 2vw;
+}
+#zero-and-one {
+  font-size: 25vw;
+  padding: 0;
+  margin: 0;
+  margin-top: 10vh;
+  margin-left: 10vw;
+}
+#aboutme-text {
+  color: red;
+  text-align: center;
+  font-size: 5vw;
+  text-shadow: 0 0 1vw black;
+}
+#description {
+  color: lightblue;
+  text-align: center;
+  font-size: 2vw;
+}
+#zero {
+  color: darkgreen;
+  animation: zero 2s linear 0s infinite alternate;
+}
+#one {
+  color: rgb(0, 255, 0);
+  animation: one 2s linear 0s infinite alternate;
+}
+.effect {
+  transition: opacity 0.15s;
+}
+.effect:hover {
+  opacity: 0.7;
+}
+@media (orientation: portrait) {
+  #grid-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .child1 {
+    order: 2;
+    width: 100%;
+  }
+  .child2 {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .child3 {
+    order: 3;
+  }
+  .child4 {
+    order: 4;
+  }
+  #name {
+    order: 2;
+    font-size: 7vw;
+    margin: 0;
+   
+  }
+  #logo {
+    order: 1;
+    height: 60%;
+    margin-top: -10vh;
+  }
+  #aboutme-text {
+    font-size: 10vw;
+  }
+  #description {
+    font-size: 3vw;
+  }
+  #zero-and-one {
+    margin: 0;
+    text-align: center;
+  }
+}
+@keyframes spin {
+  0% {
+    opacity: 1;
+    transform: rotate(1deg);
+  }
+  100% {
+    opacity: 0.5;
+    transform: rotate(-1deg);
+  }
+}
+@keyframes zero {
+  0% {
+    color: darkgreen;
+  }
+  100% {
+    color: rgb(0, 255, 0);
+  }
+}
+@keyframes one {
+  0% {
+    color: rgb(0, 255, 0);
+  }
+  100% {
+    color: darkgreen;
+  }
+}
