@@ -2,7 +2,7 @@
   font-family: monospace, Arial, sans-serif;
 }
 body {
-  background: url("background.jpg") no-repeat fixed bottom;
+  background: url("background.jpg") no-repeat center;
 }
 #grid-wrapper {
   display: grid;
@@ -28,7 +28,7 @@ body {
   grid-area: zerone;
 }
 #logo {
-  height: 63.5%;
+  height: var(--logo);
   animation: spin 1s linear 0s infinite alternate;
 }
 #name {
@@ -39,10 +39,8 @@ body {
 }
 #zero-and-one {
   font-size: 25vw;
-  padding: 0;
-  margin: 0;
-  margin-top: 10vh;
   margin-left: 10vw;
+  margin-top: 10vh;
 }
 #aboutme-text {
   color: red;
@@ -69,10 +67,69 @@ body {
 .effect:hover {
   opacity: 0.7;
 }
+/*PARTICLES*/
+.particle {
+  position: absolute;
+  top: 10.5vh;
+  animation: particles 5s linear 0s infinite;
+  border-radius: 100%;
+}
+.particle1 {
+  left: 5vw;
+  animation-delay: 1s;
+}
+.particle2 {
+  left: 15vw;
+  animation-delay: 3s;
+}
+.particle3 {
+  left: 25vw;
+  animation-delay: 5s;
+}
+.particle4 {
+  left: 35vw;
+  animation-delay: 4s;
+}
+.particle5 {
+  left: 45vw;
+  animation-delay: 2s;
+}
+@media (orientation: landscape) {
+  :root {
+    --snow: 85vh;
+    --logo: 63.5%;
+  }
+}
 @media (orientation: portrait) {
+  :root {
+    --snow: 30vh;
+    --logo: 30vh;
+  }
+  body {
+    background-attachment: initial;
+  }
   #grid-wrapper {
     display: flex;
     flex-direction: column;
+    height: 100%;
+  }
+  .particle {
+    top: 38vh;
+  }
+  .particle1 {
+    left: 10vw;
+  }
+  .particle2 {
+    left: 30vw;
+  }
+  .particle3 {
+    left: 50vw;
+  }
+  .particle4 {
+    left: 70vw;
+  }
+  .particle5 {
+    left: 90vw;
   }
   .child1 {
     order: 2;
@@ -94,12 +151,10 @@ body {
     order: 2;
     font-size: 7vw;
     margin: 0;
-   
   }
   #logo {
     order: 1;
-    height: 60%;
-    margin-top: -10vh;
+    height: var(--logo);
   }
   #aboutme-text {
     font-size: 10vw;
@@ -108,18 +163,8 @@ body {
     font-size: 3vw;
   }
   #zero-and-one {
-    margin: 0;
     text-align: center;
-  }
-}
-@keyframes spin {
-  0% {
-    opacity: 1;
-    transform: rotate(1deg);
-  }
-  100% {
-    opacity: 0.5;
-    transform: rotate(-1deg);
+    margin: 0;
   }
 }
 @keyframes zero {
@@ -136,5 +181,21 @@ body {
   }
   100% {
     color: darkgreen;
+  }
+}
+@keyframes particles {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(var(--snow));
+    filter: invert(100%);
   }
 }
